@@ -12,6 +12,7 @@
 		07DF12642178F8250037850A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07DF12622178F8250037850A /* Main.storyboard */; };
 		07DF12662178F8260037850A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07DF12652178F8260037850A /* Assets.xcassets */; };
 		07DF12692178F8260037850A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07DF12672178F8260037850A /* LaunchScreen.storyboard */; };
+		DC0A4E981BF8F4D5F25E927B /* Pods_copilot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FED1E129FFE459EDB9452DF /* Pods_copilot.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		07DF12652178F8260037850A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07DF12682178F8260037850A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07DF126A2178F8260037850A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FED1E129FFE459EDB9452DF /* Pods_copilot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_copilot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C06BB6AEC5A82884B757F328 /* Pods-copilot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-copilot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-copilot/Pods-copilot.debug.xcconfig"; sourceTree = "<group>"; };
+		F8C562C96848BDC0C4E284AD /* Pods-copilot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-copilot.release.xcconfig"; path = "Pods/Target Support Files/Pods-copilot/Pods-copilot.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC0A4E981BF8F4D5F25E927B /* Pods_copilot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				07DF125D2178F8250037850A /* copilot */,
 				07DF125C2178F8250037850A /* Products */,
+				3EDD09AC6A3E015CA5FF8951 /* Pods */,
+				088338E6CCC06216B86195F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = copilot;
 			sourceTree = "<group>";
 		};
+		088338E6CCC06216B86195F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1FED1E129FFE459EDB9452DF /* Pods_copilot.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3EDD09AC6A3E015CA5FF8951 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C06BB6AEC5A82884B757F328 /* Pods-copilot.debug.xcconfig */,
+				F8C562C96848BDC0C4E284AD /* Pods-copilot.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 07DF126D2178F8260037850A /* Build configuration list for PBXNativeTarget "copilot" */;
 			buildPhases = (
+				0603B8BC4B3D8050FBF85DB1 /* [CP] Check Pods Manifest.lock */,
 				07DF12572178F8250037850A /* Sources */,
 				07DF12582178F8250037850A /* Frameworks */,
 				07DF12592178F8250037850A /* Resources */,
+				07DF12702178FD1B0037850A /* Insert Mapbox access token */,
+				7496F80B67FCE8AE78FF6769 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,86 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0603B8BC4B3D8050FBF85DB1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-copilot-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		07DF12702178FD1B0037850A /* Insert Mapbox access token */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(TARGET_BUILD_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Insert Mapbox access token";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "token_file=$SRCROOT/mapbox_access_token\n\n# First check the above path, then the user directory.\n# Ignore exit codes from `cat`.\ntoken=\"$(cat $token_file 2> /dev/null)\" || token=\"$(cat ~/.mapbox 2> /dev/null)\"\n\nif [ \"$token\" ]; then\nplutil -replace MGLMapboxAccessToken -string $token \"$TARGET_BUILD_DIR/$INFOPLIST_PATH\"\nelse\necho 'error: Missing Mapbox access token'\nopen 'https://www.mapbox.com/studio/account/tokens/'\necho \"error: Get an access token from <https://www.mapbox.com/studio/account/tokens/>, then create a new file at $token_file that contains the access token.\"\nexit 1\nfi\n";
+		};
+		7496F80B67FCE8AE78FF6769 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-copilot/Pods-copilot-frameworks.sh",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/MapboxCoreNavigation/MapboxCoreNavigation.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxDirections.swift/MapboxDirections.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework",
+				"${BUILT_PRODUCTS_DIR}/MapboxNavigation/MapboxNavigation.framework",
+				"${PODS_ROOT}/MapboxNavigationNative/MapboxNavigationNative.framework",
+				"${PODS_ROOT}/MapboxNavigationNative/MapboxNavigationNative.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/MapboxSpeech/MapboxSpeech.framework",
+				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
+				"${BUILT_PRODUCTS_DIR}/Solar/Solar.framework",
+				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCoreNavigation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxNavigation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxNavigationNative.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/MapboxNavigationNative.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSpeech.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Solar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-copilot/Pods-copilot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		07DF12572178F8250037850A /* Sources */ = {
@@ -280,6 +387,7 @@
 		};
 		07DF126E2178F8260037850A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C06BB6AEC5A82884B757F328 /* Pods-copilot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +406,7 @@
 		};
 		07DF126F2178F8260037850A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8C562C96848BDC0C4E284AD /* Pods-copilot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
