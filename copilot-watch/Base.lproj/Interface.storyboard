@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14256" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14313.18" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14243"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14219"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14238.10"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="copilot_watch" customModuleProvider="target">
+                    <items>
+                        <table alignment="left" id="41w-84-qri">
+                            <items>
+                                <tableRow identifier="TableRowController" id="4kw-eB-ZQq" customClass="TableRowController" customModule="copilot_watch_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="zpT-sc-q60">
+                                        <items>
+                                            <imageView width="40" alignment="left" image="plus" id="bK1-vT-vmy">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <label alignment="left" text="Label" id="iEE-o0-bYu"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="tableRowImage" destination="bK1-vT-vmy" id="PRk-ji-nZY"/>
+                                        <outlet property="tableRowLabel" destination="iEE-o0-bYu" id="KVC-wf-E6o"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="watchTable" destination="41w-84-qri" id="Yoq-lN-8oH"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
@@ -32,16 +59,54 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="copilot_watch" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="copilot_watch" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="ict-ZM-oq3">
+            <objects>
+                <notificationController id="Gw4-OQ-kR0">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="r4q-BM-mGD"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" id="ad3-6q-AHk"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="r4q-BM-mGD" id="idO-6W-kWx"/>
+                        <segue destination="wxO-Ex-VMy" kind="relationship" relationship="dynamicNotificationInterface" id="5e2-ME-BlT"/>
+                        <segue destination="uF8-F3-UhD" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="BHx-en-lua"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="743" y="340"/>
+        </scene>
+        <!--Alert Notifcation Controller-->
+        <scene sceneID="GpV-ao-kJt">
+            <objects>
+                <controller id="wxO-Ex-VMy" customClass="AlertNotifcationController" customModule="copilot_watch_Extension">
+                    <items>
+                        <label alignment="left" text="Label" id="s6e-8Z-pyd"/>
+                    </items>
+                    <connections>
+                        <outlet property="alertLabel" destination="s6e-8Z-pyd" id="grG-UX-wkE"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="1043" y="340"/>
+        </scene>
+        <!--Alert Notifcation Controller-->
+        <scene sceneID="h0J-rg-y8p">
+            <objects>
+                <controller id="uF8-F3-UhD" customClass="AlertNotifcationController" customModule="copilot_watch_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="1043" y="40"/>
         </scene>
     </scenes>
 </document>

@@ -11,6 +11,7 @@ import Mapbox
 import MapboxCoreNavigation
 import MapboxNavigation
 import MapboxDirections
+import UserNotifications
 
 class ViewController: UIViewController, MGLMapViewDelegate {
     
@@ -29,6 +30,13 @@ class ViewController: UIViewController, MGLMapViewDelegate {
             singleTap.require(toFail: recognizer)
         }
         mapView.addGestureRecognizer(singleTap)
+        
+        let center = UNUserNotificationCenter.current()
+        // Request permission to display alerts and play sounds.
+        center.requestAuthorization(options: [.alert, .sound])
+        { (granted, error) in
+            // Enable or disable features based on authorization.
+        }
     }
     
     @objc @IBAction func handleMapTap(sender: UITapGestureRecognizer) {
@@ -42,6 +50,7 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         annotation.title = "Navigate here!"
         annotation.coordinate = mapView.convert(tapPoint, toCoordinateFrom: mapView)
         mapView.addAnnotation(annotation)
+        sendNotification()
     }
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
@@ -61,6 +70,26 @@ class ViewController: UIViewController, MGLMapViewDelegate {
             let navigationViewController = NavigationViewController(for: navigationRoute!)
             self.present(navigationViewController, animated: true, completion: nil)
         })
+    }
+    
+    func sendNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Some title"
+        content.body = "Some description"
+        content.sound = UNNotificationSound.default
+        
+        // Create the request
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString,
+                                            content: content, trigger: nil)
+        
+        // Schedule the request with the system.
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+            if error != nil {
+                print("❌ ERROR: \(error!)")
+            }
+        }
     }
 }
 

@@ -12,20 +12,21 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet weak var watchTable: WKInterfaceTable!
+    let names = ["SF", "DC", "NY"]
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        // Configure interface objects here.
+        loadTableData()
     }
     
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
+    private func loadTableData() {
+        watchTable.setNumberOfRows(names.count, withRowType: "TableRowController")
+        
+        for (index, name) in names.enumerated() {
+            let row = watchTable.rowController(at: index) as! TableRowController
+            row.tableRowLabel.setText(name)
+        }
     }
-    
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
-
 }
