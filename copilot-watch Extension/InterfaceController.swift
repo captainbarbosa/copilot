@@ -8,18 +8,19 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
 
 class InterfaceController: WKInterfaceController {
-
-    @IBOutlet weak var watchTable: WKInterfaceTable!
-    let names = ["SF", "DC", "NY"]
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         loadTableData()
     }
+
+    @IBOutlet weak var watchTable: WKInterfaceTable!
+    let names = ["SF", "DC", "NY"]
     
     private func loadTableData() {
         watchTable.setNumberOfRows(names.count, withRowType: "TableRowController")
@@ -27,6 +28,7 @@ class InterfaceController: WKInterfaceController {
         for (index, name) in names.enumerated() {
             let row = watchTable.rowController(at: index) as! TableRowController
             row.tableRowLabel.setText(name)
+            
         }
     }
 }

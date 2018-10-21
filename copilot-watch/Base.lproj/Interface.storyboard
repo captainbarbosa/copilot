@@ -104,7 +104,20 @@
         <!--Alert Notifcation Controller-->
         <scene sceneID="h0J-rg-y8p">
             <objects>
-                <controller id="uF8-F3-UhD" customClass="AlertNotifcationController" customModule="copilot_watch_Extension"/>
+                <controller id="uF8-F3-UhD" customClass="AlertNotifcationController" customModule="copilot_watch_Extension">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="U5J-kh-Iuc">
+                            <items>
+                                <imageView width="40" height="40" alignment="left" id="8Xn-CW-S6D"/>
+                                <label alignment="left" text="Label" numberOfLines="0" id="T0C-GH-Z8q"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="stepAlertImage" destination="8Xn-CW-S6D" id="1KT-hO-oAE"/>
+                        <outlet property="stepAlertLabel" destination="T0C-GH-Z8q" id="Pzm-IS-Pqo"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="1043" y="40"/>
         </scene>

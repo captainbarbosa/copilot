@@ -13,7 +13,9 @@ import UserNotifications
 
 class AlertNotifcationController: WKUserNotificationInterfaceController {
 
-    @IBOutlet weak var alertLabel: WKInterfaceLabel!
+    
+    @IBOutlet weak var stepAlertImage: WKInterfaceImage!
+    @IBOutlet weak var stepAlertLabel: WKInterfaceLabel!
     
     override init() {
         // Initialize variables here.
@@ -39,27 +41,19 @@ class AlertNotifcationController: WKUserNotificationInterfaceController {
         // Populate your dynamic notification interface as quickly as possible.
         //
         // After populating your dynamic notification interface call the completion block.
+        let instruction = notification.request.content.body
+        stepAlertLabel.setText(instruction)
+        
+        if instruction.contains("left") {
+            stepAlertImage.setImageNamed("turn-left")
+            stepAlertImage.setTintColor(UIColor.red)
+        }
+        
+        if instruction.contains("right") {
+            stepAlertImage.setImageNamed("turn-right")
+            stepAlertImage.setTintColor(UIColor.red)
+        }
+        
         completionHandler(.custom)
-    }
-    
-    override func didReceiveRemoteNotification(_ remoteNotification: [AnyHashable : Any], withCompletion completionHandler: @escaping (WKUserNotificationInterfaceType) -> Void) {
-            // This method is called when a remote notification needs to be presented.
-            // Implement it if you use a dynamic notification interface.
-            // Populate your dynamic notification interface as quickly as possible.
-    
-            guard let aps = remoteNotification["aps"] as? NSDictionary,
-                  let alert = aps["alert"] as? NSDictionary,
-                  let body = alert["body"] as? String else {
-                    // If the APNS payload doesn't have what we need, fall back to static notification
-                    completionHandler(.default)
-                    return
-            }
-    
-        alertLabel.setText(body)
-//            weatherLabel.setText(dataSource.currentWeather.temperatureString)
-    //        conditionsImage.setImageNamed(dataSource.currentWeather.weatherConditionImageName)
-    
-            // After populating your dynamic notification interface call the completion block.
-            completionHandler(.custom)
     }
 }

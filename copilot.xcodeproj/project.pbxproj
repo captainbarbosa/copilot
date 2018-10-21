@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		072A919D217D35070034089C /* WatchSessionManagerWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072A919C217D35070034089C /* WatchSessionManagerWatch.swift */; };
 		0751FCBD21796D160049DD31 /* TableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0751FCBC21796D160049DD31 /* TableRowController.swift */; };
 		0751FCC0217A526A0049DD31 /* AlertNotifcationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0751FCBF217A526A0049DD31 /* AlertNotifcationController.swift */; };
+		0777C4D1217D262A00EEC72B /* WatchSessionManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0777C4D0217D262A00EEC72B /* WatchSessionManagerApp.swift */; };
 		07DF125F2178F8250037850A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF125E2178F8250037850A /* AppDelegate.swift */; };
 		07DF12612178F8250037850A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DF12602178F8250037850A /* ViewController.swift */; };
 		07DF12642178F8250037850A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07DF12622178F8250037850A /* Main.storyboard */; };
@@ -68,9 +70,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		072A919C217D35070034089C /* WatchSessionManagerWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManagerWatch.swift; sourceTree = "<group>"; };
 		0751FCBC21796D160049DD31 /* TableRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowController.swift; sourceTree = "<group>"; };
 		0751FCBE217A50360049DD31 /* TestNotification.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestNotification.apns; sourceTree = "<group>"; };
 		0751FCBF217A526A0049DD31 /* AlertNotifcationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertNotifcationController.swift; sourceTree = "<group>"; };
+		0777C4D0217D262A00EEC72B /* WatchSessionManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManagerApp.swift; sourceTree = "<group>"; };
 		07DF125B2178F8250037850A /* copilot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = copilot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07DF125E2178F8250037850A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07DF12602178F8250037850A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 				07DF12652178F8260037850A /* Assets.xcassets */,
 				07DF12672178F8260037850A /* LaunchScreen.storyboard */,
 				07DF126A2178F8260037850A /* Info.plist */,
+				0777C4D0217D262A00EEC72B /* WatchSessionManagerApp.swift */,
 			);
 			path = copilot;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				07DF1284217911830037850A /* InterfaceController.swift */,
+				072A919C217D35070034089C /* WatchSessionManagerWatch.swift */,
 				0751FCBC21796D160049DD31 /* TableRowController.swift */,
 				07DF1286217911830037850A /* ExtensionDelegate.swift */,
 				07DF1288217911830037850A /* NotificationController.swift */,
@@ -406,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0777C4D1217D262A00EEC72B /* WatchSessionManagerApp.swift in Sources */,
 				07DF12612178F8250037850A /* ViewController.swift in Sources */,
 				07DF125F2178F8250037850A /* AppDelegate.swift in Sources */,
 			);
@@ -415,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072A919D217D35070034089C /* WatchSessionManagerWatch.swift in Sources */,
 				07DF1289217911830037850A /* NotificationController.swift in Sources */,
 				0751FCC0217A526A0049DD31 /* AlertNotifcationController.swift in Sources */,
 				07DF1287217911830037850A /* ExtensionDelegate.swift in Sources */,

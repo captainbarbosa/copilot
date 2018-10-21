@@ -1,21 +1,15 @@
-//
-//  ViewController.swift
-//  copilot
-//
-//  Created by Nadia Barbosa on 10/18/18.
-//  Copyright © 2018 Nadia Barbosa. All rights reserved.
-//
-
 import UIKit
 import Mapbox
 import MapboxCoreNavigation
 import MapboxNavigation
 import MapboxDirections
 import UserNotifications
+import WatchConnectivity
 
-class ViewController: UIViewController, MGLMapViewDelegate {
+class ViewController: UIViewController, MGLMapViewDelegate, NavigationViewControllerDelegate {
     
     var mapView: MGLMapView!
+    var routeController: RouteController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +26,6 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         mapView.addGestureRecognizer(singleTap)
         
         let center = UNUserNotificationCenter.current()
-        // Request permission to display alerts and play sounds.
         center.requestAuthorization(options: [.alert, .sound])
         { (granted, error) in
             // Enable or disable features based on authorization.
@@ -50,7 +43,6 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         annotation.title = "Navigate here!"
         annotation.coordinate = mapView.convert(tapPoint, toCoordinateFrom: mapView)
         mapView.addAnnotation(annotation)
-        sendNotification()
     }
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
@@ -67,29 +59,23 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         _ = Directions.shared.calculate(options, completionHandler: { (waypoints, routes, error) in
             navigationRoute = routes?.first
             
-            let navigationViewController = NavigationViewController(for: navigationRoute!)
-            self.present(navigationViewController, animated: true, completion: nil)
-        })
-    }
-    
-    func sendNotification() {
-        let content = UNMutableNotificationContent()
-        content.title = "Some title"
-        content.body = "Some description"
-        content.sound = UNNotificationSound.default
+            let locationManager = SimulatedLocationManager(route: navigationRoute!)
+            locationManager.speedMultiplier = 5
+            
+            let navigationService = MapboxNavigationService(route: navigationRoute!, locationSource: locationManager, simulating: .always)
+            let navigationController = NavigationViewController(for: navigationRoute!, navigationService: navigationService)
+            navigationController.delegate = self
+            self.routeController = RouteController(along: navigationRoute, dataSource: locationManager)
+
+            self.present(navigationController, animated: true, completion: nil)
         
-        // Create the request
-        let uuidString = UUID().uuidString
-        let request = UNNotificationRequest(identifier: uuidString,
-                                            content: content, trigger: nil)
-        
-        // Schedule the request with the system.
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.add(request) { (error) in
-            if error != nil {
-                print("❌ ERROR: \(error!)")
+            do {
+                print("✅ Passing route to watch")
+                try WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: ["route" : navigationRoute.debugDescription as AnyObject])
+            } catch {
+                print("❌ Failed to pass route to watch")
             }
-        }
+        })
     }
 }
 

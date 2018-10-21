@@ -1,12 +1,5 @@
-//
-//  AppDelegate.swift
-//  copilot
-//
-//  Created by Nadia Barbosa on 10/18/18.
-//  Copyright © 2018 Nadia Barbosa. All rights reserved.
-//
-
 import UIKit
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        WatchSessionManager.sharedManager.startSession()
         return true
     }
 
