@@ -16,6 +16,8 @@ class InterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(InterfaceController.didRecieveRoute), name: NSNotification.Name(rawValue: "didRecieveRoute"), object: nil)
+        
         loadTableData()
     }
 
@@ -30,5 +32,9 @@ class InterfaceController: WKInterfaceController {
             row.tableRowLabel.setText(name)
             
         }
+    }
+    
+    @objc func didRecieveRoute(notification: Notification) {
+        guard let route = notification.userInfo!["route"] else { return }
     }
 }

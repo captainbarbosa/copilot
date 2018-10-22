@@ -17,7 +17,11 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
         session.activate()
     }
     
+    // Pass data obtained here to InterfaceController
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         print("⚡️ Context recieved on watch!")
+
+        NotificationCenter.default.post(name: NSNotification.Name("didRecieveRoute"), object: nil, userInfo: applicationContext)
+        
     }
 }
