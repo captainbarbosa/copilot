@@ -71,7 +71,15 @@ class ViewController: UIViewController, MGLMapViewDelegate, NavigationViewContro
         
             do {
                 print("✅ Passing route to watch")
-                try WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: ["route" : navigationRoute.debugDescription as AnyObject])
+                let routeSteps = navigationRoute.legs[0].steps
+                
+                var routeStepTitles = [String]()
+                
+                for routeStep in routeSteps {
+                    routeStepTitles.append(routeStep.instructions)
+                }
+                
+                try WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: ["routeSteps" : routeStepTitles as AnyObject])
             } catch {
                 print("❌ Failed to pass route to watch")
             }
