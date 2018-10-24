@@ -24,7 +24,8 @@ class MainInterfaceController: WKInterfaceController {
     @objc func didRecieveRouteSteps(notification: Notification) {
         print("🌈 didRecieveRouteSteps")
         
-        guard let routeSteps = notification.userInfo!["routeSteps"] else { return }
-        self.presentController(withName: "RouteInterfaceController", context: routeSteps)
+        guard let contextForWatch = notification.userInfo else { return }
+        
+        self.presentController(withName: "RouteInterfaceController", context: contextForWatch)
     }
 }

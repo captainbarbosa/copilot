@@ -13,6 +13,18 @@
             <objects>
                 <controller identifier="RouteInterfaceController" id="t4f-kY-x1z" customClass="RouteInterfaceController" customModule="copilot_watch_Extension">
                     <items>
+                        <group width="1" alignment="left" id="z0V-Pe-Qo9">
+                            <items>
+                                <label alignment="left" text="Label" id="fm7-HE-t4e">
+                                    <color key="textColor" red="1" green="0.36706339799999999" blue="0.26168011990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                </label>
+                                <label alignment="right" text="Label" id="o22-Hm-sex">
+                                    <color key="textColor" red="1" green="0.36706339799999999" blue="0.26168011990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                </label>
+                            </items>
+                        </group>
                         <table alignment="left" spacing="10" id="oF4-MZ-kUu">
                             <items>
                                 <tableRow identifier="TableRowController" selectable="NO" id="eh3-Nk-rpY" customClass="TableRowController" customModule="copilot_watch_Extension">
@@ -33,6 +45,8 @@
                         </table>
                     </items>
                     <connections>
+                        <outlet property="distanceLabel" destination="o22-Hm-sex" id="6Oi-Xi-hNB"/>
+                        <outlet property="estimatedTravelTimeLabel" destination="fm7-HE-t4e" id="27c-nQ-rTa"/>
                         <outlet property="routeStepTable" destination="oF4-MZ-kUu" id="ZJ8-WA-LUU"/>
                     </connections>
                 </controller>

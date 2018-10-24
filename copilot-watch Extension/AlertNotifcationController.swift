@@ -34,25 +34,38 @@ class AlertNotifcationController: WKUserNotificationInterfaceController {
         super.didDeactivate()
     }
 
-
     override func didReceive(_ notification: UNNotification, withCompletion completionHandler: @escaping (WKUserNotificationInterfaceType) -> Swift.Void) {
         // This method is called when a notification needs to be presented.
         // Implement it if you use a dynamic notification interface.
         // Populate your dynamic notification interface as quickly as possible.
         //
         // After populating your dynamic notification interface call the completion block.
-        let instruction = notification.request.content.body
-        stepAlertLabel.setText(instruction)
+        let routeStep = notification.request.content.body
         
-        if instruction.contains("left") {
-            stepAlertImage.setImageNamed("turn-left")
-            stepAlertImage.setTintColor(UIColor.red)
-        }
+        var routeStepImage = String()
         
-        if instruction.contains("right") {
-            stepAlertImage.setImageNamed("turn-right")
-            stepAlertImage.setTintColor(UIColor.red)
+        switch routeStep {
+        case let step where step.contains("south"):
+            routeStepImage = "south"
+            break
+        case let step where step.contains("north"):
+            routeStepImage = "north"
+            break
+        case let step where step.contains("right"):
+            routeStepImage = "turn-right"
+            break
+        case let step where step.contains("left"):
+            routeStepImage = "turn-left"
+            break
+        case let step where step.contains("arrive"):
+            routeStepImage = "arrive"
+            break
+        default:
+            break
         }
+
+        stepAlertLabel.setText(routeStep)
+        stepAlertImage.setImageNamed(routeStepImage)
         
         completionHandler(.custom)
     }
