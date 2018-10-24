@@ -54,7 +54,7 @@ class ViewController: UIViewController, MGLMapViewDelegate, NavigationViewContro
         let destination = annotation.coordinate
         var navigationRoute: Route!
         
-        let options = NavigationRouteOptions(coordinates: [origin, destination], profileIdentifier: .automobileAvoidingTraffic)
+        let options = NavigationRouteOptions(coordinates: [origin, destination], profileIdentifier: .walking)
         
         _ = Directions.shared.calculate(options, completionHandler: { (waypoints, routes, error) in
             navigationRoute = routes?.first
