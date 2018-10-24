@@ -16,6 +16,30 @@ class RouteInterfaceController: WKInterfaceController {
         for (index, routeStep) in routeSteps.enumerated() {
             let row = routeStepTable.rowController(at: index) as! TableRowController
             row.tableRowLabel.setText(routeStep)
+            
+            var routeStepImage = String()
+            
+            switch routeStep {
+            case let step where step.contains("south"):
+                routeStepImage = "south"
+                break
+            case let step where step.contains("north"):
+                routeStepImage = "north"
+                break
+            case let step where step.contains("right"):
+                routeStepImage = "turn-right"
+                break
+            case let step where step.contains("left"):
+                routeStepImage = "turn-left"
+                break
+            case let step where step.contains("arrive"):
+                routeStepImage = "arrive"
+                break
+            default:
+                break
+            }
+            
+            row.tableRowImage.setImageNamed(routeStepImage)
         }
     }
 

@@ -13,15 +13,19 @@
             <objects>
                 <controller identifier="RouteInterfaceController" id="t4f-kY-x1z" customClass="RouteInterfaceController" customModule="copilot_watch_Extension">
                     <items>
-                        <table alignment="left" id="oF4-MZ-kUu">
+                        <table alignment="left" spacing="10" id="oF4-MZ-kUu">
                             <items>
-                                <tableRow identifier="TableRowController" id="eh3-Nk-rpY" customClass="TableRowController" customModule="copilot_watch_Extension">
-                                    <group key="rootItem" width="1" alignment="left" id="fhm-VA-fhZ">
+                                <tableRow identifier="TableRowController" selectable="NO" id="eh3-Nk-rpY" customClass="TableRowController" customModule="copilot_watch_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" spacing="6" id="fhm-VA-fhZ">
                                         <items>
-                                            <label alignment="left" text="Label" numberOfLines="0" id="lXh-cX-ZXL"/>
+                                            <separator alignment="left" alpha="0.0" id="Pao-Q7-xCd"/>
+                                            <imageView width="30" height="30" alignment="left" verticalAlignment="center" id="5l3-xO-UjX"/>
+                                            <label alignment="left" verticalAlignment="center" text="Label" numberOfLines="0" id="lXh-cX-ZXL"/>
+                                            <separator alignment="left" verticalAlignment="bottom" alpha="0.0" id="LgR-nQ-Wam"/>
                                         </items>
                                     </group>
                                     <connections>
+                                        <outlet property="tableRowImage" destination="5l3-xO-UjX" id="U0I-hi-cO0"/>
                                         <outlet property="tableRowLabel" destination="lXh-cX-ZXL" id="R1A-1j-ICj"/>
                                     </connections>
                                 </tableRow>
@@ -33,18 +37,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="-277"/>
-        </scene>
-        <!--NoRouteInterfaceController-->
-        <scene sceneID="I5U-QC-38M">
-            <objects>
-                <controller identifier="NoRouteInterfaceController" id="Y0k-3b-gmt" customClass="NoRouteInterfaceController" customModule="copilot_watch_Extension">
-                    <items>
-                        <label alignment="center" verticalAlignment="center" text="No route to show" textAlignment="left" id="5IB-SC-e3c"/>
-                    </items>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="219" y="25"/>
+            <point key="canvasLocation" x="220" y="29"/>
         </scene>
         <!--MainInterfaceController-->
         <scene sceneID="aou-V4-d1y">
@@ -52,8 +45,10 @@
                 <controller identifier="MainInterfaceController" id="AgC-eL-Hgc" customClass="MainInterfaceController" customModule="copilot_watch_Extension">
                     <items>
                         <table alignment="left" id="41w-84-qri"/>
+                        <label width="136" alignment="center" verticalAlignment="center" text="Start a Copilot navigation session on your iPhone to view the route on your watch." numberOfLines="0" id="rih-mN-39z"/>
                     </items>
                     <connections>
+                        <outlet property="noRouteLabel" destination="rih-mN-39z" id="21c-Cv-mQl"/>
                         <outlet property="watchTable" destination="41w-84-qri" id="Yoq-lN-8oH"/>
                     </connections>
                 </controller>
@@ -129,8 +124,9 @@
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="U5J-kh-Iuc">
                             <items>
-                                <imageView width="40" height="40" alignment="left" id="8Xn-CW-S6D"/>
+                                <imageView width="30" height="30" alignment="left" id="8Xn-CW-S6D"/>
                                 <label alignment="left" text="Label" numberOfLines="0" id="T0C-GH-Z8q"/>
+                                <separator alignment="left" alpha="0.0" id="n3t-kj-lkH"/>
                             </items>
                         </group>
                     </items>

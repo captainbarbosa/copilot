@@ -13,18 +13,12 @@ import WatchConnectivity
 
 class MainInterfaceController: WKInterfaceController {
 
-    var routeSteps = [String]()
-    
+    @IBOutlet weak var noRouteLabel: WKInterfaceLabel!
+
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        print("Main interface loaded")
         
         NotificationCenter.default.addObserver(self, selector: #selector(MainInterfaceController.didRecieveRouteSteps), name: NSNotification.Name(rawValue: "didRecieveRouteSteps"), object: nil)
-        
-        // Do generic setup for watch app here
-        if routeSteps.isEmpty {
-            print("No steps to show!")
-        }
     }
     
     @objc func didRecieveRouteSteps(notification: Notification) {
