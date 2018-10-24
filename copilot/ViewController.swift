@@ -58,16 +58,9 @@ class ViewController: UIViewController, MGLMapViewDelegate, NavigationViewContro
         
         _ = Directions.shared.calculate(options, completionHandler: { (waypoints, routes, error) in
             navigationRoute = routes?.first
-            
-            let locationManager = SimulatedLocationManager(route: navigationRoute!)
-            locationManager.speedMultiplier = 5
-            
-            let navigationService = MapboxNavigationService(route: navigationRoute!, locationSource: locationManager, simulating: .always)
-            let navigationController = NavigationViewController(for: navigationRoute!, navigationService: navigationService)
-            navigationController.delegate = self
-            self.routeController = RouteController(along: navigationRoute, dataSource: locationManager)
 
-            self.present(navigationController, animated: true, completion: nil)
+            let navigationViewController = NavigationViewController(for: navigationRoute!)
+            self.present(navigationViewController, animated: true, completion: nil)
         
             do {
                 print("✅ Passing route to watch")
